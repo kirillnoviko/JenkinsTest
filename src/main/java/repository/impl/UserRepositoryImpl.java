@@ -46,8 +46,32 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User save(User entity) {
+    public User findOne(Long id) {
         return null;
+    }
+
+    @Override
+    public User save(User entity) {
+
+        final String saveUser = "NSERT INTO users (name , surname) values("
+                +entity.getName() + ", " + entity.getSurname() + ");" ;
+
+        Statement statement;
+        Connection connection;
+
+        try {
+            connection = DataSource.getConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate(saveUser);
+
+            //Row mapping
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("SQL Issues!");
+        }
+        return entity;
     }
 
     @Override
@@ -60,8 +84,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     }
 
+
     @Override
-    public User findOne(Long numberPassport) {
+    public User findOneNumberPassport(Long numberPassport) {
         return null;
     }
 }

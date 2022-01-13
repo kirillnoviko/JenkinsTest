@@ -17,9 +17,6 @@ import java.util.List;
 @WebServlet(urlPatterns = { "/userList" })
 public class UsersShowController extends HttpServlet {
 
-
-
-
         private static final long serialVersionUID = 1L;
 
         public UsersShowController() {
@@ -55,10 +52,5 @@ public class UsersShowController extends HttpServlet {
                 throws ServletException, IOException {
             doGet(request, response);
         }
-
-
-
-
-
 
 }

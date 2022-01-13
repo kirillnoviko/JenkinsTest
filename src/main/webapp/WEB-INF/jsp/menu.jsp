@@ -5,7 +5,8 @@
 
     <a href="${pageContext.request.contextPath}/hello">Home</a>
     |
-    <a href="${pageContext.request.contextPath}/userList">Product List</a>
+    <a href="${pageContext.request.contextPath}/userList">userList</a>
     |
+
 
 </div>
