@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(urlPatterns = { "/createProduct" })
+@WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -53,8 +53,8 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User save(User entity) {
 
-        final String saveUser = "NSERT INTO users (name , surname) values("
-                +entity.getName() + ", " + entity.getSurname() + ");" ;
+        final String saveUser = "NSERT INTO users (name, surname) values(' "
+                +entity.getName() + "  ',' " + entity.getSurname() + " '); " ;
 
         Statement statement;
         Connection connection;
