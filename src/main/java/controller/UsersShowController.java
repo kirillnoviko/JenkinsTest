@@ -46,7 +46,7 @@ public class UsersShowController extends HttpServlet {
 
             // Forward к /WEB-INF/views/productListView.jsp
             RequestDispatcher dispatcher = request.getServletContext()
-                    .getRequestDispatcher("/WEB-INF/views/userList.jsp");
+                    .getRequestDispatcher("/WEB-INF/jsp/userList.jsp");
             dispatcher.forward(request, response);
         }
 

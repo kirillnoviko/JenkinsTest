@@ -25,7 +25,7 @@ public class FrontController extends HttpServlet {
     }
 
     private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/hello");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/userList.jsp");
 
     }
 }
