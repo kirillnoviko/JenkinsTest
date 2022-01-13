@@ -44,7 +44,7 @@ public class CreateUserController extends HttpServlet {
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
 
-        User user = new User(name, surname, "0" ,0);
+        User user = new User(0l,name, surname, "0" ,0l);
 
         String errorString = null;
 

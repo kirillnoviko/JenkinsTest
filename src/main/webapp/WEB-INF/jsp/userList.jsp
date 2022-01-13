@@ -17,6 +17,7 @@
 
 <table border="1" cellpadding="5" cellspacing="1" >
     <tr>
+        <th>id</th>
         <th>Name</th>
         <th>Surname</th>
         <th>Edit</th>
@@ -24,6 +25,7 @@
     </tr>
     <c:forEach items="${userList}" var="user" >
         <tr>
+            <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.surname}</td>
 

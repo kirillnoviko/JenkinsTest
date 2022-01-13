@@ -3,12 +3,13 @@ package domain;
 import java.util.Objects;
 
 public class User {
+    private Long id;
     private String name;
     private String surname;
     private String city;
-    private int numberPassport;
+    private Long numberPassport;
 
-    public User(String name, String surname, String city, int numberPassport) {
+    public User(Long id, String name, String surname, String city, Long numberPassport) {
         this.name = name;
         this.surname = surname;
         this.city = city;
@@ -17,6 +18,8 @@ public class User {
 
     public User() {
     }
+
+    public Long getId(){return id;}
 
     public String getName() {
         return name;
@@ -30,9 +33,11 @@ public class User {
         return city;
     }
 
-    public int getNumberPassport() {
+    public Long getNumberPassport() {
         return numberPassport;
     }
+
+    public void setId(Long id){this.id=id;}
 
     public void setName(String name) {
         this.name = name;
@@ -46,7 +51,7 @@ public class User {
         this.city = city;
     }
 
-    public void setNumberPassport(int numberPassport) {
+    public void setNumberPassport(Long numberPassport) {
         this.numberPassport = numberPassport;
     }
 
@@ -54,6 +59,7 @@ public class User {
     @Override
     public String toString() {
         return "domain.User{" +
+                "id='" + id + '\'' +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", city='" + city + '\'' +
@@ -71,6 +77,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, city, numberPassport);
+        return Objects.hash(id,name, surname, city, numberPassport);
     }
 }
