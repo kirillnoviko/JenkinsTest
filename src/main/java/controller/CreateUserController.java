@@ -48,8 +48,10 @@ public class CreateUserController extends HttpServlet {
 
         String errorString = null;
 
+
         userRepository.save(user);
-        response.sendRedirect(request.getContextPath()); //+ "/userList");
+
+        response.sendRedirect(request.getContextPath()+ "/userList");
 
     }
 
