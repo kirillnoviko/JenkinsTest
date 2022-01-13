@@ -30,10 +30,10 @@
             <td>${user.surname}</td>
 
             <td>
-                <a href="editProduct?code=${user.id}">Edit</a>
+                <a href="editProduct?id=${user.id}">Edit</a>
             </td>
             <td>
-                <a href="deleteProduct?code=${user.id}">Delete</a>
+                <a href="deleteProduct?id=${user.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
