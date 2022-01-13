@@ -1,10 +1,22 @@
+package domain;
+
 import java.util.Objects;
 
 public class User {
-    String name;
-    String surname;
-    String city;
-    int numberPassport;
+    private String name;
+    private String surname;
+    private String city;
+    private int numberPassport;
+
+    public User(String name, String surname, String city, int numberPassport) {
+        this.name = name;
+        this.surname = surname;
+        this.city = city;
+        this.numberPassport = numberPassport;
+    }
+
+    public User() {
+    }
 
     public String getName() {
         return name;
@@ -41,7 +53,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "domain.User{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", city='" + city + '\'' +

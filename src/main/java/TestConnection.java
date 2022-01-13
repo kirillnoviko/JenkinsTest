@@ -1,3 +1,6 @@
+import domain.User;
+import hicari.DataSource;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
