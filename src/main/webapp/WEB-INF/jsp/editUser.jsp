@@ -18,7 +18,7 @@
 
 <c:if test="${not empty product}">
     <form method="POST" action="${pageContext.request.contextPath}/editProduct">
-        <input type="hidden" name="code" value="${user.id}" />
+        <input type="hidden" name="id" value="${user.id}" />
         <table border="0">
 
             <tr>
