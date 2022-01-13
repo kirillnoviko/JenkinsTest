@@ -32,6 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
             //Row mapping
             while (rs.next()) {
                 User user = new User();
+                user.setName(rs.getString("id"));
                 user.setName(rs.getString("name"));
                 user.setSurname(rs.getString("surname"));
 
