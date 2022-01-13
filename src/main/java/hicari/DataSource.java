@@ -12,6 +12,7 @@ public class DataSource {
     private static HikariDataSource ds;
 
     static {
+        config.setDriverClassName(org.postgresql.Driver.class.getName());
         config.setJdbcUrl( "jdbc:postgresql://localhost:5432/testdb" );
         config.setUsername( "user1" );
         config.setPassword( "user1" );
