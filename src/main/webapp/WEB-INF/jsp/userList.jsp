@@ -20,6 +20,7 @@
         <th>id</th>
         <th>Name</th>
         <th>Surname</th>
+        <th>roles</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -28,7 +29,14 @@
             <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.surname}</td>
+            <td>
+                <c:forEach items="${user.roles}" var="role" >
 
+                        ${role.roleName}
+
+                </c:forEach>
+
+            </td>
             <td>
                 <a href="editUser?id=${user.id}">Edit</a>
             </td>

@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Role;
 import domain.User;
 import repository.UserRepository;
 import repository.impl.UserRepositoryImpl;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 @WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserController extends HttpServlet {
@@ -38,7 +41,10 @@ public class CreateUserController extends HttpServlet {
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
 
-        User user = new User(name, surname);
+
+        User user = new User();
+        user.setName(name);
+        user.setSurname(surname);
 
         String errorString = null;
 

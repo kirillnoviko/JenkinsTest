@@ -13,20 +13,4 @@
         <url-pattern>/controller.FrontController</url-pattern>
     </servlet-mapping>
 
-    <!--    localhost:8080/application/controller.FrontController-->
-
-    <servlet>
-        <servlet-name>HelloWeb</servlet-name>
-        <jsp-file>/WEB-INF/jsp/hello.jsp</jsp-file>
-    </servlet>
-
-
-    <servlet-mapping>
-        <servlet-name>HelloWeb</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
-
-    <!--    localhost:8080/application/hello-->
-
-
 </web-app>
