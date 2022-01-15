@@ -48,7 +48,32 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findOne(Long id) {
-        return null;
+        User result = new User();
+
+        final String findAllQuery = "select * from users where id = " + id + " ;" ;
+
+        Statement statement;
+        ResultSet rs;
+        Connection connection;
+
+        try {
+            connection = DataSource.getConnection();
+            statement = connection.createStatement();
+            rs = statement.executeQuery(findAllQuery);
+
+            //Row mapping
+            while (rs.next()) {
+
+                result.setId(rs.getLong("id"));
+                result.setName(rs.getString("name"));
+                result.setSurname(rs.getString("surname"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("SQL Issues!");
+        }
+        return result;
     }
 
     @Override
