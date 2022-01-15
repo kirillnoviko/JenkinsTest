@@ -12,11 +12,11 @@
 
 <jsp:include page="menu.jsp"></jsp:include>
 
-<h3>Edit Product</h3>
+<h3>Edit User</h3>
 
 <p style="color: red;">${errorString}</p>
 
-<c:if test="${not empty product}">
+<c:if test="${not empty user}">
     <form method="POST" action="${pageContext.request.contextPath}/editUser">
         <input type="hidden" name="id" value="${user.id}" />
         <table border="0">
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td>SurName</td>
-                <td><input type="text" name="surname" value="${user.name}" /></td>
+                <td><input type="text" name="surname" value="${user.surname}" /></td>
             </tr>
             <tr>
                 <td colspan = "2">
