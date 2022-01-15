@@ -11,7 +11,7 @@
 
 <jsp:include page="menu.jsp"></jsp:include>
 
-<h3>Product List</h3>
+<h3>Users List</h3>
 
 <p style="color: red;">${errorString}</p>
 

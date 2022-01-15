@@ -1,19 +1,28 @@
 package domain;
 
+
+
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
+@Table(name = "users")
 public class User {
-    private Long id;
-    private String name;
-    private String surname;
-    private String city;
-    private Long numberPassport;
 
-    public User(Long id, String name, String surname, String city, Long numberPassport) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String surname;
+
+
+    public User( String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.city = city;
-        this.numberPassport = numberPassport;
+
     }
 
     public User() {
@@ -29,13 +38,13 @@ public class User {
         return surname;
     }
 
-    public String getCity() {
+ /*   public String getCity() {
         return city;
     }
 
     public Long getNumberPassport() {
         return numberPassport;
-    }
+    }*/
 
     public void setId(Long id){this.id=id;}
 
@@ -47,6 +56,7 @@ public class User {
         this.surname = surname;
     }
 
+/*
     public void setCity(String city) {
         this.city = city;
     }
@@ -54,6 +64,7 @@ public class User {
     public void setNumberPassport(Long numberPassport) {
         this.numberPassport = numberPassport;
     }
+*/
 
 
     @Override
@@ -62,8 +73,8 @@ public class User {
                 "id='" + id + '\'' +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", city='" + city + '\'' +
-                ", numberPassport=" + numberPassport +
+         /*       ", city='" + city + '\'' +
+                ", numberPassport=" + numberPassport +*/
                 '}';
     }
 
@@ -72,11 +83,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return numberPassport == user.numberPassport && name.equals(user.name) && surname.equals(user.surname) && city.equals(user.city);
+        return /*numberPassport == user.numberPassport &&*/ name.equals(user.name) && surname.equals(user.surname) /*&& city.equals(user.city)*/;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id,name, surname, city, numberPassport);
+        return Objects.hash(id,name, surname /*city, numberPassport*/);
     }
 }

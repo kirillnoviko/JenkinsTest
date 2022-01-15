@@ -53,7 +53,8 @@ public class EditUserController extends HttpServlet {
         String surname = (String) request.getParameter("surname");
         String name = (String) request.getParameter("name");
 
-        User user = new User(0l,name, surname,"1",0l);
+        User user = new User(name, surname);
+        user.setId(Long.parseLong(request.getParameter("id")));
 
         String errorString = null;
 
