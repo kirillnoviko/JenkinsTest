@@ -1,5 +1,6 @@
 package util;
 
+import domain.Location;
 import domain.Role;
 import domain.User;
 import org.hibernate.SessionFactory;
@@ -18,6 +19,7 @@ public class HibernateSessionFactoryUtil {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(User.class);
                 configuration.addAnnotatedClass(Role.class);
+                configuration.addAnnotatedClass(Location.class);
 
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());

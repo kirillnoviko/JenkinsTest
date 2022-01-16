@@ -1,5 +1,6 @@
 package repository.impl;
 
+import domain.Role;
 import domain.User;
 import org.hibernate.Transaction;
 import util.DataSource;
@@ -35,6 +36,8 @@ public class UserRepositoryImpl implements UserRepository {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.save(entity);
+        session.createSQLQuery("insert into roles_users values ( nextval('roles_users_id_seq'),  " +
+                entity.getId() + " , 2); ").executeUpdate();
         tx1.commit();
         session.close();
         return entity;
@@ -54,7 +57,8 @@ public class UserRepositoryImpl implements UserRepository {
     public void delete(Long id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(findOne(id));
+
+        session.delete(session.get(User.class,id));
         tx1.commit();
         session.close();
     }

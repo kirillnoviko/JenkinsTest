@@ -1,22 +1,14 @@
 package domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 
-import javax.persistence.GenerationType;
-import javax.persistence.FetchType;
 import java.util.Collections;
 import java.util.Set;
 
@@ -26,7 +18,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {
-        "roles"
+        "roles, locations"
 })
 public class User {
 
@@ -41,6 +33,11 @@ public class User {
     private String surname;
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("users")
     private Set<Role> roles = Collections.emptySet();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<Location> locations = Collections.emptySet();
 
 }
