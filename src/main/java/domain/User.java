@@ -17,12 +17,13 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {
         "roles, locations"
 })
-public class User {
+public abstract class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,12 +41,13 @@ public class User {
             joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_role")
     )
-    @JsonIgnoreProperties("users")
     private List<Role> roles = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private Set<Location> locations = Collections.emptySet();
+
 
     public void addRole(Role role) {
         roles.add(role);

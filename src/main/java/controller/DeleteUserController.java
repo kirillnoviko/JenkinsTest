@@ -26,19 +26,15 @@ public class DeleteUserController extends HttpServlet {
             throws ServletException, IOException {
 
         Long id = Long.parseLong(request.getParameter("id"));
-        String errorString = null;
-
-
         UserRepository userRepository= new UserRepositoryImpl();
+
         userRepository.delete(id);
 
+        RequestDispatcher dispatcher = request.getServletContext()
+                .getRequestDispatcher("/WEB-INF/jsp/deleteUser.jsp");
+        dispatcher.forward(request, response);
 
-            RequestDispatcher dispatcher = request.getServletContext()
-                    .getRequestDispatcher("/WEB-INF/jsp/deleteUser.jsp");
-            dispatcher.forward(request, response);
-
-
-            response.sendRedirect(request.getContextPath() + "/userList");
+        response.sendRedirect(request.getContextPath() + "/userList");
 
 
     }

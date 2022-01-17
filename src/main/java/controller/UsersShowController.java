@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Student;
 import domain.User;
 import repository.UserRepository;
 import repository.impl.UserRepositoryImpl;
@@ -30,18 +31,20 @@ public class UsersShowController extends HttpServlet {
             UserRepository userRepository=new UserRepositoryImpl();
             List<User> result = new ArrayList<>();
             String errorString = null;
-            try{
+            User user= new Student();
+
+
+            /*try{*/
                 result = userRepository.findAll();
-            }
+            /*}
             catch(Exception e){
                 errorString=e.getMessage();
-            }
+            }*/
 
-            // Сохранить информацию в request attribute перед тем как forward к views.
             request.setAttribute("errorString", errorString);
             request.setAttribute("userList", result);
 
-            // Forward к /WEB-INF/views/productListView.jsp
+
             RequestDispatcher dispatcher = request.getServletContext()
                     .getRequestDispatcher("/WEB-INF/jsp/userList.jsp");
             dispatcher.forward(request, response);

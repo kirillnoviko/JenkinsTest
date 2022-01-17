@@ -28,7 +28,6 @@ public class Role {
     private String roleName;
 
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.MERGE , CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("roles")
     private List<User> users = new ArrayList<>();
 
     public void addUser(User user){

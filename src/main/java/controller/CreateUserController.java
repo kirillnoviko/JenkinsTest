@@ -2,6 +2,7 @@ package controller;
 
 import domain.Location;
 import domain.Role;
+import domain.Student;
 import domain.User;
 import repository.UserRepository;
 import repository.impl.UserRepositoryImpl;
@@ -38,18 +39,12 @@ public class CreateUserController extends HttpServlet {
             throws ServletException, IOException {
         UserRepository userRepository= new UserRepositoryImpl();
 
-
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
 
-
-
-        User user = new User();
+        User user = new Student();
         user.setName(name);
         user.setSurname(surname);
-
-        String errorString = null;
-
 
         userRepository.save(user);
 
