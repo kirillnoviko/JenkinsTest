@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -34,11 +36,13 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User save(User entity) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+
         Transaction tx1 = session.beginTransaction();
-        session.save(entity);
-        session.createSQLQuery("insert into roles_users values ( nextval('roles_users_id_seq'),  " +
-                entity.getId() + " , 2); ").executeUpdate();
+        Role role=session.get(Role.class,2l);
+        entity.addRole(role);
+        session.persist(entity);
         tx1.commit();
+
         session.close();
         return entity;
     }
@@ -58,7 +62,9 @@ public class UserRepositoryImpl implements UserRepository {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
 
-        session.delete(session.get(User.class,id));
+        User user =session.get(User.class,id);
+        user.remove();
+        session.delete(user);
         tx1.commit();
         session.close();
     }

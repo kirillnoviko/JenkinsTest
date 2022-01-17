@@ -5,17 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.FetchType;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,12 +27,15 @@ public class Role {
     @Column (name = "role_name")
     private String roleName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "roles_users",
-            joinColumns = @JoinColumn(name = "id_role"),
-            inverseJoinColumns = @JoinColumn(name = "id_user")
-    )
+    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.MERGE , CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("roles")
-    private Set<User> users = Collections.emptySet();
+    private List<User> users = new ArrayList<>();
+
+    public void addUser(User user){
+        users.add(user);
+    }
+    public void removeUser(User user){
+        users.remove(user);
+    }
 
 }

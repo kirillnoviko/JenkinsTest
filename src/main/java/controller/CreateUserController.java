@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Location;
 import domain.Role;
 import domain.User;
 import repository.UserRepository;
@@ -40,6 +41,7 @@ public class CreateUserController extends HttpServlet {
 
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
+
 
 
         User user = new User();
